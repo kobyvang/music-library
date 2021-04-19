@@ -1,0 +1,107 @@
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+.app {
+  width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  background-color: black;
+  margin-bottom: 50px;
+}
+
+nav ul li {
+  padding: 20px;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 50px;
+}
+
+.current {
+  border-bottom: 4px solid white;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+body {
+  background-image: url(./plain.png);
+  background-size: 1920px 1080px;
+}
+
+
+/*@import url('https://fonts.googleapis.com/css2?family=Amiri&display=swap');
+:root {
+  --basic-color: #23cc71;
+}
+.App {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: 'Amiri', serif;
+  overflow: hidden;
+}
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.container h1 {
+  font-size: 60px;
+  text-align: center;
+  color: var(--basic-color);
+}
+.repo-container {
+  width: 50%;
+  height: 700px;
+  margin: 50px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  overflow: scroll;
+}
+@media screen and (max-width: 600px) {
+  .repo-container {
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
+  }
+}
+.repo-text {
+  font-weight: 600;
+}
+.repo-description {
+  font-weight: 600;
+  font-style: bold;
+  color: var(--basic-color);
+}
+.list-head {
+  text-align: center;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+.footer {
+  font-size: 15px;
+  font-weight: 600;
+}
+.list {
+  list-style: circle;
+}*/
