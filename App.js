@@ -1,11 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
-import Navigation from'./navigation';
-import Main from './Main';
-/*import List from './list';
-import withListLoading from './withlistloading';
-import React, { useEffect, useState } from 'react';
-import axios from 'axios'*/
+import { NavLink,Switch,Route } from 'react-router-dom';
+import axios from 'axios'
+import { render } from 'react-dom';
 
 function App() {
   return (
@@ -16,48 +13,68 @@ function App() {
     </div>
   );
 }
+const Navigation = () => (
+  <nav>
+    <ul>
+      <li><NavLink exact activeClassName="current" to='/'>Home</NavLink></li>
+    </ul>
+  </nav>
+);
+const Main = () => (
+  <Switch>
+    <Route exact path='/' component={Home}></Route>
+  </Switch>
+  );
+const Home = () => (
+  <div className='home'>
+    <MusicChart/>
+  </div>
+);
+
+class MusicChart extends React.Component{
+  state = {
+    musics: []
+  }
+
+
+
+  componentDidMount(){
+    axios.get('http://www.devcodecampmusiclibrary.com/api/music')
+    .then(res => {
+      const musics = res.data;
+      this.setState({musics});
+    })
+  }
+
+
+  render(){
+    return(
+      <div className="music1">
+        <ul>{
+          this.state.musics.map(
+            music => <p>
+              <p className="title">Title: {music.title}</p>
+              <p className="artist">Artist: {music.artist}</p>
+              <p className="genre">Genre: {music.genre}</p>
+              <p className="releaseDate">ReleaseDate: {music.releaseDate}</p>
+              <br></br>
+              </p>)
+          }</ul>
+      </div>
+    )
+  }
+}             
+      
+
+
+
+    
+      
+    
+  
+
+
+
 export default App;
 
 
-
-/*import React, { useEffect, useState } from 'react';
-import './App.css';
-import List from './list';
-import withListLoading from './withlistloading';
-function App() {
-  const ListLoading = withListLoading(List);
-  const [appState, setAppState] = useState({
-    loading: false,
-    repos: null,
-  });
-
-  useEffect(() => {
-    setAppState({ loading: true });
-    const apiUrl = `https://api.github.com/users/hacktivist123/repos`;
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then((repos) => {
-        setAppState({ loading: false, repos: repos });
-      });
-  }, [setAppState]);
-  return (
-    <div className='App'>
-      <div className='container'>
-        <h1>My Repositories</h1>
-      </div>
-      <div className='repo-container'>
-        <ListLoading isLoading={appState.loading} repos={appState.repos} />
-      </div>
-      <footer>
-        <div className='footer'>
-          Built{' '}
-          <span role='img' aria-label='love'>
-            💚
-          </span>{' '}
-          with by Shedrack Akintayo
-        </div>
-      </footer>
-    </div>
-  );
-}
-export default App;*/
